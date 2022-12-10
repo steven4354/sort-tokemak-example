@@ -18,17 +18,65 @@ You can start editing the page by modifying `pages/index.tsx`. The page auto-upd
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Learn More
+## Queries
 
-To learn more about Next.js, take a look at the following resources:
+```sql
+select
+  *
+from
+  usery76xn3t.transaction_log t
+where
+  t.transaction_to = '0xd3b5d9a561c293fb42b446fe7e237daa9bf9aa84'
+and
+  t.transaction_from = '0xbd178fe085a12505473a96a57d6f2ce0bbf3a490'
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+select
+  *
+from
+  usery76xn3t.transaction_log t
+where
+  t.transaction_to = '0xd3b5d9a561c293fb42b446fe7e237daa9bf9aa84'
+and
+  t.name = 'Transfer'
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```
+select
+  sum(cast(params[3].value as float(38,0)))
+from
+  usery76xn3t.transaction_log t
+where
+  t.transaction_to = '0xd3b5d9a561c293fb42b446fe7e237daa9bf9aa84'
+and
+  t.name = 'Transfer'
+```
 
-## Deploy on Vercel
+```
+SELECT
+  SUM(CAST(params[3].value as FLOAT(38,0))) / POW(10, 18) AS total_sum,
+  EXTRACT(MONTH FROM t.timestamp) AS transaction_month
+FROM
+  usery76xn3t.transaction_log t
+WHERE
+  t.transaction_to = '0xd3b5d9a561c293fb42b446fe7e237daa9bf9aa84'
+  AND t.name = 'Transfer'
+  AND t.transaction_function_name = 'deposit'
+GROUP BY
+  EXTRACT(MONTH FROM t.timestamp)
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+SELECT
+  SUM(CAST(params[3].value as FLOAT(38,0))) / POW(10, 18) AS total_sum,
+  EXTRACT(MONTH FROM t.timestamp) AS transaction_month
+FROM
+  usery76xn3t.transaction_log t
+WHERE
+  t.transaction_to = '0xd3b5d9a561c293fb42b446fe7e237daa9bf9aa84'
+  AND t.name = 'Transfer'
+  AND t.transaction_function_name = 'withdraw'
+GROUP BY
+  EXTRACT(MONTH FROM t.timestamp)
+```

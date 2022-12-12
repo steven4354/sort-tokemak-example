@@ -13,6 +13,7 @@ specifiers:
   react: 18.2.0
   react-chartjs-2: ^5.0.1
   react-dom: 18.2.0
+  sort-xyz: ^0.0.3
   typescript: 4.9.4
 
 dependencies:
@@ -27,6 +28,7 @@ dependencies:
   react: 18.2.0
   react-chartjs-2: 5.0.1_mdhqntb7qznawtkbfweh7f2mzm
   react-dom: 18.2.0_react@18.2.0
+  sort-xyz: 0.0.3
   typescript: 4.9.4
 
 devDependencies:
@@ -453,6 +455,14 @@ packages:
   /axe-core/4.5.2:
     resolution: {integrity: sha512-u2MVsXfew5HBvjsczCv+xlwdNnB1oQR9HlAcsejZttNjKKSkeDNVwB1vMThIUIFI9GoT57Vtk8iQLwqOfAkboA==}
     engines: {node: '>=4'}
+    dev: false
+
+  /axios/0.25.0:
+    resolution: {integrity: sha512-cD8FOb0tRH3uuEe6+evtAbgJtfxr7ly3fQjYcMcuPlgkwVS9xboaVIpcDV+cYQe+yGykgwZCs1pzjntcGa6l5g==}
+    dependencies:
+      follow-redirects: 1.15.2
+    transitivePeerDependencies:
+      - debug
     dev: false
 
   /axobject-query/2.2.0:
@@ -1026,6 +1036,16 @@ packages:
 
   /flatted/3.2.7:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
+    dev: false
+
+  /follow-redirects/1.15.2:
+    resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
     dev: false
 
   /fs.realpath/1.0.0:
@@ -1832,6 +1852,15 @@ packages:
   /slash/4.0.0:
     resolution: {integrity: sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==}
     engines: {node: '>=12'}
+    dev: false
+
+  /sort-xyz/0.0.3:
+    resolution: {integrity: sha512-XuI4G26o4FFMRNw1Lmnzqtizvt0fZ/YShqzDANqA1xWmOxw0wzO03PmGgWHjwU6Of8gU8bJTDe71aP14/CJeyA==}
+    engines: {node: '>=16.1.0', npm: '>=7'}
+    dependencies:
+      axios: 0.25.0
+    transitivePeerDependencies:
+      - debug
     dev: false
 
   /source-map-js/1.0.2:

@@ -31,7 +31,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: "ALCX Reactor - in USD",
+      text: "ALCX Reactor - in ALCX",
     },
   },
 };
@@ -75,7 +75,7 @@ export default function App() {
           label: "Withdrawals",
           data: labels.map((label) => {
             const month = mapMonthToNumber(label);
-            return withdrawals.filter((obj: any ) => obj.transaction_month === month).map((obj: any) => obj.total_sum)[0] * 17
+            return withdrawals.filter((obj: any ) => obj.transaction_month === month).map((obj: any) => obj.total_sum)[0] 
           }),
           backgroundColor: "rgba(255, 99, 132, 0.5)",
         },
@@ -83,7 +83,7 @@ export default function App() {
           label: "Deposits",
           data: labels.map((label) => {
             const month = mapMonthToNumber(label);
-            return deposits.filter((obj: any ) => obj.transaction_month === month).map((obj: any) => obj.total_sum)[0] * 17
+            return deposits.filter((obj: any ) => obj.transaction_month === month).map((obj: any) => obj.total_sum)[0] 
           }),
           backgroundColor: "rgba(53, 162, 235, 0.5)",
         },

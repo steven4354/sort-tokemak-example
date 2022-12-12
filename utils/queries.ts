@@ -39,5 +39,5 @@ GROUP BY
   t.transaction_from
 ORDER BY
   balance DESC
-LIMIT 5
+LIMIT 25
 `

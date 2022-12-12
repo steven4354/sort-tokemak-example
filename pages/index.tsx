@@ -1,8 +1,48 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import React from 'react';
+import styles from "../styles/Home.module.css";
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import React, { useEffect } from "react";
 
+const items = [
+  {
+    path: "/balances",
+    name: "See ALCX Reactor - Top Balances >>",
+  },
+  {
+    path: "/bar",
+    name: "See ALCX Reactor - Deposits & Withdrawals per Month >>",
+  },
+];
+
+const List: React.FC = () => {
+  return (
+    <ul className="list">
+      {items.map((item) => (
+        <Link href={item.path} key={item.name}>
+          <li className="list-item">{item.name}</li>
+        </Link>
+      ))}
+
+      <style jsx>{`
+        .list {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        .list-item {
+          margin: 0.5rem 0;
+          color: #0070f3;
+        }
+      `}</style>
+    </ul>
+  );
+};
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -13,14 +53,18 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        {/* <h1 className={styles.title}>
+          Welcome to Tokemak Sort.xyz Demo!
+        </h1> */}
 
-        <p className={styles.description}>
+        <List />
+
+        {/* <p className={styles.description}>
           Get started by editing{' '}
           <code className={styles.code}>pages/index.tsx</code>
         </p>
+
+        
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
@@ -52,7 +96,7 @@ export default function Home() {
               Instantly deploy your Next.js site to a public URL with Vercel.
             </p>
           </a>
-        </div>
+        </div>  */}
       </main>
 
       <footer className={styles.footer}>
@@ -61,12 +105,12 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by Sort.xyz
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </div>
-  )
+  );
 }

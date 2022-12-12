@@ -38,6 +38,7 @@ const HorizontalBarChart = () => {
   return (
     <Bar
       data={data}
+      // @ts-ignore
       options={options}
       width={100}
       height={50}

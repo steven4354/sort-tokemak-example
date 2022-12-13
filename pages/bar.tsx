@@ -13,6 +13,7 @@ import {
 } from "chart.js";
 import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
+import { CopyBlock, dracula } from "react-code-blocks";
 
 ChartJS.register(
   CategoryScale,
@@ -98,6 +99,25 @@ export default function App() {
   }, []);
 
   return <>
-  <Bar options={options} data={barData} />
+    <Bar options={options} data={barData} />
+    <div>
+      <CopyBlock
+        language="js"
+        text={`
+// No API Key Required:
+// - Call directly from client side javascript / hosted anywhere (IPFS, etc.)
+// - Let anyone in the community use the API to build their own front-ends, all free
+
+// Deposits
+let deposits_result = await sort.query("`+DEPOSITS_BY_MONTH+`");
+
+// Withdrawals
+let withdrawals_result = await sort.query("`+WITHDRAWS_BY_MONTH+`");
+        `}
+        codeBlock
+        theme={dracula}
+        showLineNumbers={false}
+        />
+    </div>
   </>;
 }

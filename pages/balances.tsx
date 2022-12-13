@@ -12,6 +12,7 @@ import { Bar } from 'react-chartjs-2';
 import { faker } from "@faker-js/faker";
 import sort from '../utils/init_sort';
 import { TOP_100_BALANCES } from '../utils/queries';
+import { CopyBlock, dracula } from "react-code-blocks";
 
 ChartJS.register(
   CategoryScale,
@@ -92,5 +93,21 @@ export default function App() {
     fetchSortData();
   }, []);
   
-  return <Bar options={options} data={barData} />;
+  return <>
+    <Bar options={options} data={barData} />;
+    <div>
+      <CopyBlock
+        language="js"
+        text={`
+// No API Key Required:
+// - Call directly from client side javascript / hosted anywhere (IPFS, etc.)
+// - Let anyone in the community use the API to build their own front-ends, all free
+let result = await sort.query("`+TOP_100_BALANCES+`");
+        `}
+        codeBlock
+        theme={dracula}
+        showLineNumbers={false}
+        />
+    </div>
+  </>
 }
